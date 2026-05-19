@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #FFFFFF;
+  --color-bg-subtle: #F4F6FB;
+  --color-surface: #EEF2FF;
+  --color-blue: #1D4ED8;
+  --color-blue-dark: #1E3A8A;
+  --color-ink: #0D0D0D;
+  --color-muted: #6B7280;
+  --color-border: #E5E7EB;
+
+  --font-display: var(--font-display), sans-serif;
+  --font-body: var(--font-body), sans-serif;
+  --font-sans: var(--font-body), sans-serif;
+}
+
+:root {
+  --color-bg: #FFFFFF;
+  --color-bg-subtle: #F4F6FB;
+  --color-surface: #EEF2FF;
+  --color-blue: #1D4ED8;
+  --color-blue-dark: #1E3A8A;
+  --color-ink: #0D0D0D;
+  --color-muted: #6B7280;
+  --color-border: #E5E7EB;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Editorial Accent Utilities */
+.editorial-title {
+  font-family: var(--font-display);
+}
+
+.text-editorial-headline {
+  font-family: var(--font-display);
+  color: var(--color-ink);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-subtle);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
