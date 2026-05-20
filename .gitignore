@@ -40,8 +40,15 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Large raw media files — HEIC originals (converted to JPG) and MOV videos
+# Large raw media files — HEIC originals (converted to JPG) excluded
 public/*.HEIC
 public/*.heic
+
+# Exclude all MOVs except those used in the app components
 public/*.MOV
 public/*.mov
+!public/a.mov
+!public/b.mov
+!public/c.mov
+!public/IMG_2003.MOV
+!public/IMG_2016.MOV
