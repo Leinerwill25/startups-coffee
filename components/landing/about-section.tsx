@@ -99,6 +99,29 @@ export default function AboutSection() {
                 </span>
               </div>
             </div>
+
+            {/* Sede Oficial / Venue Partner Row */}
+            <div className="mt-8 pt-6 border-t border-border/60">
+              <span className="text-[9px] font-body font-bold text-muted uppercase tracking-widest block mb-3">
+                Sede Oficial y Aliado del Espacio
+              </span>
+              <div className="inline-flex items-center gap-4 bg-bg-subtle/50 border border-border/60 rounded-xl px-5 py-3.5 hover:border-blue/30 transition-all hover:bg-white duration-200">
+                <img
+                  src="/bdv.png"
+                  alt="HUB BDV INNOVA Logo"
+                  className="h-10 w-auto object-contain select-none pointer-events-none filter drop-shadow-xs"
+                />
+                <div className="w-px h-8 bg-border/80 mx-1" />
+                <div className="text-left leading-tight">
+                  <span className="block text-[11px] font-display font-extrabold text-ink uppercase tracking-wider">
+                    HUB BDV INNOVA
+                  </span>
+                  <span className="text-[9px] text-muted font-body font-medium block mt-0.5">
+                    Banco de Venezuela · Caracas
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

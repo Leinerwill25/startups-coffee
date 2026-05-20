@@ -76,16 +76,7 @@ export default function Hero() {
             ))}
           </div>
           <span className="text-[11px] font-body font-semibold text-ink uppercase tracking-wider">
-            ☕ 1 evento · +20 founders
-          </span>
-          <div className="w-px h-3.5 bg-blue/20" />
-          <span className="text-[11px] font-body font-semibold text-muted uppercase tracking-wider flex items-center gap-1.5">
-            Sede:
-            <img
-              src="/bdv.png"
-              alt="HUB BDV INNOVA"
-              className="h-4.5 w-auto object-contain select-none pointer-events-none"
-            />
+            ☕ 1 evento · +20 founders · Caracas
           </span>
         </div>
 
@@ -101,7 +92,7 @@ export default function Hero() {
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-20">
+        <div className="flex flex-col sm:flex-row gap-4 mb-10">
           <Link href="#proximo-evento">
             <Button pill size="lg" className="w-full sm:w-auto gap-2">
               Ver próximo evento
@@ -113,6 +104,29 @@ export default function Hero() {
               Registra tu startup ↗
             </Button>
           </Link>
+        </div>
+
+        {/* Dedicated prominent Venue Partner Banner */}
+        <div className="flex flex-col items-center gap-2 mb-20 select-none animate-in fade-in duration-500">
+          <span className="text-[9px] font-body font-bold text-muted uppercase tracking-widest leading-none">
+            Sede y Aliado Estratégico
+          </span>
+          <div className="flex items-center gap-3 bg-bg-subtle border border-border/80 rounded-2xl px-5 py-2.5 shadow-xs hover:border-blue/30 transition-all duration-200">
+            <img
+              src="/bdv.png"
+              alt="HUB BDV INNOVA Logo"
+              className="h-10 w-auto object-contain select-none pointer-events-none filter drop-shadow-xs"
+            />
+            <div className="w-px h-6 bg-border/80" />
+            <div className="text-left leading-tight">
+              <span className="block text-[11px] font-display font-extrabold uppercase tracking-wider text-ink/80">
+                HUB BDV INNOVA
+              </span>
+              <span className="block text-[8px] font-body text-muted leading-none mt-0.5">
+                Caracas, Venezuela
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Fan Gallery (3D Perspective Abanico on Desktop) */}
