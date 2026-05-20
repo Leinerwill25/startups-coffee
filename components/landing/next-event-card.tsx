@@ -28,6 +28,19 @@ export default function NextEventCard() {
               Descubre cómo estructurar tu deck y levantar capital en etapas tempranas junto a dos founders que ya escalaron en el mercado regional.
             </p>
 
+            {/* Sede Oficial BDV Innova Logo */}
+            <div className="flex flex-col sm:flex-row items-center gap-2 mb-8 bg-bg-subtle/50 px-4 py-2 rounded-xl border border-border/60">
+              <span className="text-[10px] font-body font-semibold uppercase tracking-wider text-muted">
+                Sede Oficial:
+              </span>
+              <div className="h-4 w-px bg-border/60 hidden sm:block mx-1" />
+              <img
+                src="/bdv.png"
+                alt="HUB BDV INNOVA"
+                className="h-7 w-auto object-contain select-none pointer-events-none"
+              />
+            </div>
+
             {/* Location & Date grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-12 w-full max-w-md py-6 border-t border-b border-border mb-8">
               <div className="flex items-center justify-center gap-2.5 text-ink">

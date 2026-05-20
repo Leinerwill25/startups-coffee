@@ -76,7 +76,16 @@ export default function Hero() {
             ))}
           </div>
           <span className="text-[11px] font-body font-semibold text-ink uppercase tracking-wider">
-            ☕ 1 evento · +20 founders · Caracas
+            ☕ 1 evento · +20 founders
+          </span>
+          <div className="w-px h-3.5 bg-blue/20" />
+          <span className="text-[11px] font-body font-semibold text-muted uppercase tracking-wider flex items-center gap-1.5">
+            Sede:
+            <img
+              src="/bdv.png"
+              alt="HUB BDV INNOVA"
+              className="h-4.5 w-auto object-contain select-none pointer-events-none"
+            />
           </span>
         </div>
 
