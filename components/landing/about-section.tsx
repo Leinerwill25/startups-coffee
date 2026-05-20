@@ -39,7 +39,7 @@ export default function AboutSection() {
             <p className="font-body text-muted text-sm sm:text-base leading-relaxed">
               Startups Coffee es un encuentro mensual diseñado para impulsar a los fundadores
               venezolanos en etapas tempranas. Co-organizado por{' '}
-              <span className="font-semibold text-ink">Smartgit</span>,{' '}
+              <span className="font-semibold text-ink">Smartgib</span>,{' '}
               <span className="font-semibold text-ink">Rematte</span>,{' '}
               <span className="font-semibold text-ink">Ashira</span> y{' '}
               <span className="font-semibold text-ink">Syncwave</span> en el{' '}
@@ -50,7 +50,7 @@ export default function AboutSection() {
 
             {/* Organizer Logo Cards */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
-              {/* Card 1: Smartgit */}
+              {/* Card 1: Smartgib */}
               <div className="bg-bg-subtle/40 border border-border/60 rounded-xl p-3 flex items-center justify-center hover:border-blue/30 transition-all hover:bg-white duration-200">
                 <svg className="w-4 h-4 text-blue/80 mr-2 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="18" cy="18" r="3" />
@@ -60,7 +60,7 @@ export default function AboutSection() {
                   <path d="M6 9v6" />
                 </svg>
                 <span className="font-display font-extrabold text-[11px] tracking-wider text-ink/80 uppercase">
-                  Smartgit
+                  Smartgib
                 </span>
               </div>
 

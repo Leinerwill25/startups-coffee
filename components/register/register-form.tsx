@@ -128,7 +128,7 @@ export default function RegisterForm() {
           {/* Nombre de la startup */}
           <Input
             label="Nombre de la startup"
-            placeholder="Ej. Ridery, Yummy, Smartgit..."
+            placeholder="Ej. Ridery, Yummy, Smartgib..."
             error={errors.name?.message}
             {...register('name')}
           />
@@ -210,7 +210,7 @@ export default function RegisterForm() {
           {/* Web o Instagram */}
           <Input
             label="Sitio web o Instagram"
-            placeholder="Ej. https://ridery.app o @smartgit_ve"
+            placeholder="Ej. https://ridery.app o @smartgib_ve"
             error={errors.website_or_ig?.message}
             {...register('website_or_ig')}
           />

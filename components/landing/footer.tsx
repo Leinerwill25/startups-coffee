@@ -73,7 +73,7 @@ export default function Footer() {
           </p>
           <p className="font-body text-[10px] text-white/40 leading-none">
             Co-organizado por{' '}
-            <span className="text-white/60 font-semibold">Smartgit</span>,{' '}
+            <span className="text-white/60 font-semibold">Smartgib</span>,{' '}
             <span className="text-white/60 font-semibold">Rematte</span>,{' '}
             <span className="text-white/60 font-semibold">Ashira</span>,{' '}
             <span className="text-white/60 font-semibold">Syncwave</span> y el equipo fundador.
