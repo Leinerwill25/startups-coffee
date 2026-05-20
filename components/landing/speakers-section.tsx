@@ -95,7 +95,40 @@ export function SpeakersSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Mobile: horizontal snap carousel */}
+        <div className="flex sm:hidden overflow-x-auto snap-x snap-mandatory gap-4 -mx-6 px-6 pb-4 no-scrollbar">
+          {speakers.map((s) => (
+            <div
+              key={s.id}
+              className="snap-start shrink-0 w-[72vw] bg-bg-subtle/30 border border-border/80 rounded-3xl p-6 flex flex-col items-center text-center"
+            >
+              <div className="relative mb-5">
+                <img
+                  src={s.avatar_url || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150'}
+                  alt={s.name}
+                  className="w-24 h-24 rounded-full object-cover border-2 border-border"
+                />
+                <span className="absolute bottom-0 right-0 bg-blue text-white p-1.5 rounded-full border-2 border-white shadow-xs">
+                  <Award size={12} />
+                </span>
+              </div>
+              <h4 className="font-display font-extrabold text-base text-ink uppercase tracking-wide leading-none mb-1">{s.name}</h4>
+              <p className="text-[10px] text-muted font-body mb-3">{s.role} · <strong className="font-semibold text-ink/80">{s.startup}</strong></p>
+              <div className="bg-white border border-border/60 rounded-2xl p-4 flex-1 flex flex-col justify-between mb-4 w-full">
+                <p className="text-[10px] text-blue font-bold uppercase tracking-widest mb-1 font-body">Tema: {s.topic}</p>
+                <p className="text-[11px] text-muted italic leading-relaxed">{s.quote || `"${s.topic}"`}</p>
+              </div>
+              {s.linkedin && (
+                <a href={s.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-[#0077B5] transition-colors" aria-label={`LinkedIn de ${s.name}`}>
+                  <Linkedin size={18} />
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop: 4-col grid */}
+        <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-6">
           {speakers.map((s) => (
             <div
               key={s.id}
@@ -111,31 +144,14 @@ export function SpeakersSection() {
                   <Award size={12} />
                 </span>
               </div>
-
-              <h4 className="font-display font-extrabold text-base text-ink uppercase tracking-wide leading-none mb-1">
-                {s.name}
-              </h4>
-              <p className="text-[10px] text-muted font-body mb-3">
-                {s.role} · <strong className="font-semibold text-ink/80">{s.startup}</strong>
-              </p>
-              
+              <h4 className="font-display font-extrabold text-base text-ink uppercase tracking-wide leading-none mb-1">{s.name}</h4>
+              <p className="text-[10px] text-muted font-body mb-3">{s.role} · <strong className="font-semibold text-ink/80">{s.startup}</strong></p>
               <div className="bg-white border border-border/60 rounded-2xl p-4 flex-1 flex flex-col justify-between mb-4">
-                <p className="text-[10px] text-blue font-bold uppercase tracking-widest mb-1 font-body">
-                  Tema: {s.topic}
-                </p>
-                <p className="text-[11px] text-muted italic leading-relaxed">
-                  {s.quote || `"${s.topic}"`}
-                </p>
+                <p className="text-[10px] text-blue font-bold uppercase tracking-widest mb-1 font-body">Tema: {s.topic}</p>
+                <p className="text-[11px] text-muted italic leading-relaxed">{s.quote || `"${s.topic}"`}</p>
               </div>
-
               {s.linkedin && (
-                <a
-                  href={s.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted hover:text-[#0077B5] transition-colors"
-                  aria-label={`LinkedIn de ${s.name}`}
-                >
+                <a href={s.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-[#0077B5] transition-colors" aria-label={`LinkedIn de ${s.name}`}>
                   <Linkedin size={18} />
                 </a>
               )}

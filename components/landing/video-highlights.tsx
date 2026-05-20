@@ -56,7 +56,7 @@ function VideoCard({ video }: { video: VideoItem }) {
               <Play size={22} className="fill-white translate-x-0.5" />
             </div>
             <span className="text-[10px] text-white/80 font-medium tracking-wide flex items-center gap-1">
-              <Volume2 size={12} /> Clic para reproducir
+              <Volume2 size={12} /> Toca para reproducir
             </span>
           </div>
 
@@ -90,7 +90,17 @@ export function VideoHighlights() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {/* Mobile: horizontal snap carousel */}
+        <div className="flex sm:hidden overflow-x-auto snap-x snap-mandatory gap-4 -mx-6 px-6 pb-4 no-scrollbar">
+          {VIDEOS.map((video, idx) => (
+            <div key={idx} className="snap-start shrink-0 w-[72vw]">
+              <VideoCard video={video} />
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop: 3-col grid */}
+        <div className="hidden sm:grid grid-cols-3 gap-6 max-w-4xl mx-auto">
           {VIDEOS.map((video, idx) => (
             <VideoCard key={idx} video={video} />
           ))}

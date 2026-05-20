@@ -45,22 +45,41 @@ export function PhotoGallery() {
           </p>
         </div>
 
-        {/* Vertical Portrait Gallery Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        {/* Mobile: horizontal snap carousel */}
+        <div className="flex sm:hidden overflow-x-auto snap-x snap-mandatory gap-4 -mx-6 px-6 pb-4 no-scrollbar">
           {IMAGES.map((img, i) => (
             <div
               key={i}
               onClick={() => open(i)}
-              className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-border group cursor-pointer shadow-xs hover:scale-101 hover:shadow-md transition-all duration-300"
+              className="relative snap-start shrink-0 w-[72vw] aspect-[3/4] rounded-2xl overflow-hidden border border-border cursor-pointer shadow-sm"
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="w-full h-full object-cover brightness-[0.72]"
+              />
+              <div className="absolute inset-0 bg-ink/25 pointer-events-none" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <ZoomIn className="text-white/60" size={20} />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop: portrait grid */}
+        <div className="hidden sm:grid grid-cols-3 lg:grid-cols-4 gap-4">
+          {IMAGES.map((img, i) => (
+            <div
+              key={i}
+              onClick={() => open(i)}
+              className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-border group cursor-pointer shadow-xs hover:scale-[1.01] hover:shadow-md transition-all duration-300"
             >
               <img
                 src={img.src}
                 alt={img.alt}
                 className="w-full h-full object-cover brightness-[0.72] group-hover:scale-105 group-hover:brightness-75 transition-all duration-500"
               />
-              {/* Permanent dark vignette overlay */}
               <div className="absolute inset-0 bg-ink/25 pointer-events-none" />
-              {/* Hover zoom icon */}
               <div className="absolute inset-0 bg-ink/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
                 <ZoomIn className="text-white" size={24} />
               </div>
@@ -74,7 +93,6 @@ export function PhotoGallery() {
           className="fixed inset-0 z-[200] bg-ink/95 flex items-center justify-center p-4 animate-in fade-in duration-200"
           onClick={close}
         >
-          {/* Close button */}
           <button
             onClick={close}
             className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors cursor-pointer"
@@ -83,30 +101,22 @@ export function PhotoGallery() {
             <X size={24} />
           </button>
 
-          {/* Navigation */}
           <button
-            onClick={(e) => {
-              e.stopPropagation()
-              prev()
-            }}
-            className="absolute left-6 text-white/70 hover:text-white transition-colors p-2 cursor-pointer"
+            onClick={(e) => { e.stopPropagation(); prev() }}
+            className="absolute left-4 sm:left-6 text-white/70 hover:text-white transition-colors p-2 cursor-pointer"
             aria-label="Imagen anterior"
           >
             <ChevronLeft size={36} />
           </button>
 
           <button
-            onClick={(e) => {
-              e.stopPropagation()
-              next()
-            }}
-            className="absolute right-6 text-white/70 hover:text-white transition-colors p-2 cursor-pointer"
+            onClick={(e) => { e.stopPropagation(); next() }}
+            className="absolute right-4 sm:right-6 text-white/70 hover:text-white transition-colors p-2 cursor-pointer"
             aria-label="Imagen siguiente"
           >
             <ChevronRight size={36} />
           </button>
 
-          {/* Large image */}
           <div
             className="max-w-4xl max-h-[85vh] flex flex-col items-center gap-4"
             onClick={(e) => e.stopPropagation()}

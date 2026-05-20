@@ -148,13 +148,43 @@ export function RoadmapTimeline() {
           </div>
         </div>
 
-        {/* Grid of month pills */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-2 mb-10">
+        {/* Month pills — mobile: horizontal-scroll carousel | lg+: 12-col grid */}
+        {/* Mobile carousel */}
+        <div className="flex lg:hidden overflow-x-auto snap-x snap-mandatory gap-2 pb-4 -mx-6 px-6 no-scrollbar mb-6">
           {ROADMAP.map((m) => {
             const isActive = active === m.num
             return (
               <button
                 key={m.num}
+                onClick={() => setActive(m.num)}
+                className={`group flex flex-col items-center gap-1.5 py-3 px-2 rounded-2xl border transition-all duration-200 cursor-pointer snap-start shrink-0 w-24
+                  ${m.done
+                    ? 'bg-blue border-blue text-white'
+                    : isActive
+                    ? 'bg-white/10 border-white/40 text-white'
+                    : 'bg-white/5 border-white/10 text-white/40'
+                  }`}
+              >
+                <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-black
+                  ${m.done ? 'bg-white/20' : isActive ? 'bg-white/20' : 'bg-white/5'}`}
+                >
+                  {m.done ? <CheckCircle2 size={14} className="text-white" /> : m.num}
+                </div>
+                <span className="text-[7px] font-bold uppercase tracking-wider leading-tight text-center line-clamp-2 px-0.5">
+                  {m.topic}
+                </span>
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Desktop 12-col grid */}
+        <div className="hidden lg:grid grid-cols-12 gap-2 mb-10">
+          {ROADMAP.map((m) => {
+            const isActive = active === m.num
+            return (
+              <button
+                key={`d-${m.num}`}
                 onClick={() => setActive(m.num)}
                 className={`group flex flex-col items-center gap-1.5 py-3 px-1 rounded-2xl border transition-all duration-200 cursor-pointer
                   ${m.done
@@ -178,7 +208,7 @@ export function RoadmapTimeline() {
         </div>
 
         {/* Detail panel */}
-        <div className="bg-white/5 border border-white/10 rounded-3xl p-8 sm:p-10 flex flex-col sm:flex-row items-start gap-8 transition-all duration-300">
+        <div className="bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-10 flex flex-col sm:flex-row items-start gap-6 sm:gap-8 transition-all duration-300">
           {/* Month number */}
           <div className="shrink-0 w-20 h-20 rounded-2xl border border-white/10 bg-white/5 flex flex-col items-center justify-center">
             <span className="text-[9px] text-white/40 font-bold uppercase tracking-widest leading-none">Mes</span>
