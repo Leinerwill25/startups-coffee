@@ -112,8 +112,8 @@ const galleryItems: GalleryItem[] = [
     opacity: 'opacity-90',
   },
   {
-    type: 'video',
-    src: '/IMG_2016.MOV',
+    type: 'image',
+    src: '/IMG_2086.jpg',
     alt: 'Toma del espacio del evento',
     transform: 'rotateY(-12deg) translateY(24px)',
     opacity: 'opacity-95',
@@ -126,8 +126,8 @@ const galleryItems: GalleryItem[] = [
     opacity: 'opacity-100 ring-2 ring-blue/30 shadow-lg',
   },
   {
-    type: 'video',
-    src: '/IMG_2003.MOV',
+    type: 'image',
+    src: '/IMG_2088.jpg',
     alt: 'Sesión en vivo del evento',
     transform: 'rotateY(12deg) translateY(24px)',
     opacity: 'opacity-95',
@@ -244,18 +244,12 @@ export default function Hero() {
                     transformStyle: 'preserve-3d',
                   }}
                 >
-                  {item.type === 'video' ? (
-                    <AutoVideo
-                      src={item.src}
-                      className="w-full h-full object-cover object-center"
-                    />
-                  ) : (
-                    <img
-                      src={item.src}
-                      alt={item.alt}
-                      className="w-full h-full object-cover object-center"
-                    />
-                  )}
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    loading={idx === 3 ? 'eager' : 'lazy'}
+                    className="w-full h-full object-cover object-center"
+                  />
                 </div>
               ))}
             </div>
@@ -268,18 +262,12 @@ export default function Hero() {
                 key={idx}
                 className="w-64 h-80 rounded-2xl overflow-hidden border border-border shadow-md snap-center shrink-0"
               >
-                {item.type === 'video' ? (
-                  <AutoVideo
-                    src={item.src}
-                    className="w-full h-full object-cover object-center"
-                  />
-                ) : (
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    className="w-full h-full object-cover object-center"
-                  />
-                )}
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  className="w-full h-full object-cover object-center"
+                />
               </div>
             ))}
           </div>

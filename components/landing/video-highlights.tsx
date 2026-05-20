@@ -34,7 +34,7 @@ function VideoCard({ video }: { video: VideoItem }) {
       <video
         ref={ref}
         src={video.src}
-        preload="metadata"
+        preload="none"
         playsInline
         loop
         onClick={handlePlay}

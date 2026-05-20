@@ -56,6 +56,8 @@ export function PhotoGallery() {
               <img
                 src={img.src}
                 alt={img.alt}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover brightness-[0.72]"
               />
               <div className="absolute inset-0 bg-ink/25 pointer-events-none" />
