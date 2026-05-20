@@ -106,26 +106,23 @@ export default function Hero() {
           </Link>
         </div>
 
-        {/* Dedicated prominent Venue Partner Banner */}
-        <div className="flex flex-col items-center gap-2 mb-20 select-none animate-in fade-in duration-500">
-          <span className="text-[9px] font-body font-bold text-muted uppercase tracking-widest leading-none">
-            Sede y Aliado Estratégico
-          </span>
-          <div className="flex items-center gap-3 bg-bg-subtle border border-border/80 rounded-2xl px-5 py-2.5 shadow-xs hover:border-blue/30 transition-all duration-200">
-            <img
-              src="/bdv.png"
-              alt="HUB BDV INNOVA Logo"
-              className="h-10 w-auto object-contain select-none pointer-events-none filter drop-shadow-xs"
-            />
-            <div className="w-px h-6 bg-border/80" />
-            <div className="text-left leading-tight">
-              <span className="block text-[11px] font-display font-extrabold uppercase tracking-wider text-ink/80">
-                HUB BDV INNOVA
-              </span>
-              <span className="block text-[8px] font-body text-muted leading-none mt-0.5">
-                Caracas, Venezuela
-              </span>
-            </div>
+        {/* Dedicated prominent Venue Partner Block (Free Logo + Box below) */}
+        <div className="flex flex-col items-center select-none animate-in fade-in duration-500 mb-20">
+          <img
+            src="/bdv.png"
+            alt="HUB BDV INNOVA Logo"
+            className="h-20 w-auto object-contain select-none pointer-events-none filter drop-shadow-sm mb-4 hover:scale-105 transition-all duration-300"
+          />
+          <div className="bg-bg-subtle border border-border/80 rounded-2xl px-5 py-2.5 shadow-xs text-center">
+            <span className="block text-[9px] font-body font-bold text-muted uppercase tracking-widest leading-none mb-1">
+              Sede y Aliado Estratégico
+            </span>
+            <span className="block text-xs font-display font-extrabold uppercase tracking-wider text-ink/80">
+              HUB BDV INNOVA
+            </span>
+            <span className="block text-[9px] font-body text-muted leading-none mt-0.5">
+              Caracas, Venezuela
+            </span>
           </div>
         </div>
 

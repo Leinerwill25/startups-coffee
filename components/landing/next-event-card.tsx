@@ -29,18 +29,20 @@ export default function NextEventCard() {
             </p>
 
             {/* Sede Oficial BDV Innova Logo Block */}
-            <div className="flex flex-col items-center gap-3 mb-8 bg-bg-subtle/40 p-6 rounded-2xl border border-border/80 w-full max-w-md hover:border-blue/30 transition-all duration-200">
-              <span className="text-[9px] font-body font-bold uppercase tracking-widest text-muted leading-none">
-                Sede y Patrocinador de Espacio
-              </span>
+            <div className="flex flex-col items-center mb-8 select-none">
               <img
                 src="/bdv.png"
                 alt="HUB BDV INNOVA"
-                className="h-14 w-auto object-contain select-none pointer-events-none filter drop-shadow-xs"
+                className="h-20 w-auto object-contain select-none pointer-events-none filter drop-shadow-sm mb-4 hover:scale-105 transition-all duration-300"
               />
-              <span className="text-[10px] font-display font-extrabold uppercase tracking-wider text-ink/80">
-                HUB BDV INNOVA
-              </span>
+              <div className="bg-bg-subtle/50 border border-border/80 rounded-2xl px-6 py-3.5 shadow-xs text-center max-w-sm">
+                <span className="block text-[9px] font-body font-bold uppercase tracking-widest text-muted leading-none mb-1">
+                  Sede y Patrocinador de Espacio
+                </span>
+                <span className="block text-xs font-display font-extrabold uppercase tracking-wider text-ink/80">
+                  HUB BDV INNOVA
+                </span>
+              </div>
             </div>
 
             {/* Location & Date grid */}

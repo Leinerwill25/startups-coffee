@@ -102,17 +102,16 @@ export default function AboutSection() {
 
             {/* Sede Oficial / Venue Partner Row */}
             <div className="mt-8 pt-6 border-t border-border/60">
-              <span className="text-[9px] font-body font-bold text-muted uppercase tracking-widest block mb-3">
-                Sede Oficial y Aliado del Espacio
-              </span>
-              <div className="inline-flex items-center gap-4 bg-bg-subtle/50 border border-border/60 rounded-xl px-5 py-3.5 hover:border-blue/30 transition-all hover:bg-white duration-200">
+              <div className="flex flex-col items-start gap-3 select-none">
                 <img
                   src="/bdv.png"
                   alt="HUB BDV INNOVA Logo"
-                  className="h-10 w-auto object-contain select-none pointer-events-none filter drop-shadow-xs"
+                  className="h-16 w-auto object-contain select-none pointer-events-none filter drop-shadow-sm mb-1 hover:scale-105 transition-all duration-300"
                 />
-                <div className="w-px h-8 bg-border/80 mx-1" />
-                <div className="text-left leading-tight">
+                <div className="bg-bg-subtle/50 border border-border/60 rounded-xl px-5 py-3 text-left">
+                  <span className="block text-[9px] font-body font-bold text-muted uppercase tracking-widest leading-none mb-1.5">
+                    Sede Oficial y Aliado del Espacio
+                  </span>
                   <span className="block text-[11px] font-display font-extrabold text-ink uppercase tracking-wider">
                     HUB BDV INNOVA
                   </span>
