@@ -16,6 +16,17 @@ import Footer from '@/components/landing/footer';
 import Button from '@/components/ui/button';
 import Link from 'next/link';
 
+// Módulo de Interactividad components
+import { EventBanner } from '@/components/landing/event-banner';
+import { Organizers } from '@/components/landing/organizers';
+import { RoadmapTimeline } from '@/components/landing/roadmap-timeline';
+import { FAQSection } from '@/components/landing/faq-section';
+import { PhotoGallery } from '@/components/landing/photo-gallery';
+import { VideoHighlights } from '@/components/landing/video-highlights';
+import { InstagramFeed } from '@/components/landing/instagram-feed';
+import { SpeakersSection } from '@/components/landing/speakers-section';
+import { BookOpen } from 'lucide-react';
+
 export const revalidate = 60; // ISR - revalidate page cache every 60 seconds
 
 export default async function Home() {
@@ -39,6 +50,9 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      {/* Promo banner at the top of everything */}
+      <EventBanner />
+
       {/* Sticky Header Navbar */}
       <Navbar />
 
@@ -46,7 +60,10 @@ export default async function Home() {
         {/* Hero Banner + 3D Abanico fan gallery */}
         <Hero />
 
-        {/* Dark Metric Stats Grid Row */}
+        {/* Co-organizers discrete logos row */}
+        <Organizers />
+
+        {/* Dark Metric Stats Grid Row with count up */}
         <StatsRow />
 
         {/* Split About Section + Minimal Text columns */}
@@ -55,17 +72,55 @@ export default async function Home() {
         {/* Asymmetric Bento Grid rows */}
         <BentoGrid />
 
+        {/* Interactive Roadmap Timeline */}
+        <RoadmapTimeline />
+
         {/* Large centered custom border Next Event Card */}
         <NextEventCard />
 
+        {/* Past speakers profile grid */}
+        <SpeakersSection />
+
         {/* Dark theme Podcast Section + Shimmer Skeletons list */}
         <PodcastPreview />
+
+        {/* Past Event Photo Lightbox gallery */}
+        <PhotoGallery />
+
+        {/* Vertical Reel Video highlights */}
+        <VideoHighlights />
+
+        {/* Post-event summaries quick report banner */}
+        <section className="bg-surface py-12 border-t border-b border-blue/10 select-none text-center">
+          <div className="max-w-xl mx-auto px-6">
+            <span className="inline-flex items-center gap-1.5 bg-blue/10 text-blue px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider mb-3">
+              <BookOpen size={12} /> Lectura rápida
+            </span>
+            <h4 className="font-display font-extrabold text-sm text-ink uppercase tracking-wide mb-1">
+              ¿Te perdiste el último encuentro?
+            </h4>
+            <p className="text-xs text-muted font-body mb-4">
+              Lee los aprendizajes clave del taller de validación.
+            </p>
+            <Link href="/eventos/pmf-y-validacion">
+              <span className="inline-flex items-center gap-1 text-xs font-semibold text-blue hover:text-blue-dark hover:underline transition-colors cursor-pointer">
+                Ver resumen del mes 1 →
+              </span>
+            </Link>
+          </div>
+        </section>
 
         {/* Startups community approved listings grid */}
         <StartupsPreview startups={approvedStartups} />
 
         {/* Testimonials pure-React dots carousel with auto-slide & Touch check */}
         <TestimonialsCarousel />
+
+        {/* Instagram post grid embed */}
+        <InstagramFeed />
+
+        {/* Smooth Accordion FAQ list */}
+        <FAQSection />
 
         {/* CTA final centered box */}
         <section className="bg-blue text-white py-20 text-center select-none relative overflow-hidden">

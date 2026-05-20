@@ -24,6 +24,11 @@ export const metadata: Metadata = {
   },
 };
 
+import { CustomCursor } from '@/components/ui/custom-cursor';
+import { ReadingProgress } from '@/components/ui/reading-progress';
+import { NewsletterPopup } from '@/components/ui/newsletter-popup';
+import { FloatingCTA } from '@/components/ui/floating-cta';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,7 +36,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${outfit.variable} ${inter.variable}`}>
-      <body className="antialiased font-body selection:bg-[#EEF2FF] selection:text-[#1D4ED8]">
+      <body className="antialiased font-body selection:bg-surface selection:text-blue">
+        <CustomCursor />
+        <ReadingProgress />
+        <NewsletterPopup />
+        <FloatingCTA />
         {children}
       </body>
     </html>

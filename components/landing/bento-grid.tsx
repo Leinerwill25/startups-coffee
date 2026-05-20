@@ -23,7 +23,7 @@ export default function BentoGrid() {
           {/* Fila 1: Card 1 (Image Overlay 60%) */}
           <div className="lg:col-span-6 relative h-80 rounded-2xl overflow-hidden border border-border shadow-sm group">
             <img
-              src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800"
+              src="/IMG_2070.jpg"
               alt="Dos Masterclasses en acción en el Hub"
               className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
             />
@@ -84,7 +84,7 @@ export default function BentoGrid() {
           {/* Fila 2: Card 4 (Image Overlay 65%) */}
           <div className="lg:col-span-6 relative h-80 rounded-2xl overflow-hidden border border-border shadow-sm group">
             <img
-              src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=800"
+              src="/IMG_2071.jpg"
               alt="Comunidad Real de startups en Caracas"
               className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
             />

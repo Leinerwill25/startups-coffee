@@ -1,56 +1,154 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Button from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { NewHere } from './new-here';
+
+const headlineWords = ['El', 'encuentro', 'mensual', 'de', 'founders', 'venezolanos.'];
+
+function AnimatedHeadline() {
+  const [visible, setVisible] = useState<boolean[]>(Array(headlineWords.length).fill(false));
+
+  useEffect(() => {
+    headlineWords.forEach((_, i) => {
+      const timer = setTimeout(() => {
+        setVisible(prev => {
+          const next = [...prev];
+          next[i] = true;
+          return next;
+        });
+      }, i * 120);
+      return () => clearTimeout(timer);
+    });
+  }, []);
+
+  return (
+    <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-ink max-w-4xl leading-[1.08] tracking-tight mb-6 min-h-[3rem] sm:min-h-[4rem] md:min-h-[5rem] lg:min-h-[10rem]">
+      {headlineWords.map((word, i) => (
+        <span
+          key={i}
+          className="inline-block mr-3 transition-all duration-600 ease-out"
+          style={{
+            opacity: visible[i] ? 1 : 0,
+            transform: visible[i] ? 'translateY(0)' : 'translateY(24px)',
+          }}
+        >
+          {word === 'founders' ? (
+            <span className="text-blue">{word}</span>
+          ) : word}
+        </span>
+      ))}
+    </h1>
+  );
+}
+
+function HeroParallax({ children }: { children: React.ReactNode }) {
+  const [offsetY, setOffsetY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setOffsetY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div
+      style={{ transform: `translateY(${offsetY * 0.15}px)` }}
+      className="transition-none will-change-transform w-full overflow-visible"
+    >
+      {children}
+    </div>
+  );
+}
+
+// Component to auto-play muted video reliably
+function AutoVideo({ src, className }: { src: string; className: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.play().catch(() => {});
+    }
+  }, []);
+  return (
+    <video
+      ref={ref}
+      src={src}
+      muted
+      loop
+      playsInline
+      autoPlay
+      className={className}
+    />
+  );
+}
+
+// Gallery items — images NOT repeated from photo-gallery.tsx section below
+// photo-gallery uses: IMG_2070, IMG_2018, IMG_2023, IMG_2058, IMG_2059, IMG_2064, IMG_2066, IMG_2067
+type GalleryItem = {
+  type: 'image' | 'video';
+  src: string;
+  alt: string;
+  transform: string;
+  opacity: string;
+};
+
+const galleryItems: GalleryItem[] = [
+  {
+    type: 'image',
+    src: '/IMG_2079.jpg',
+    alt: 'Conversaciones entre founders',
+    transform: 'rotateY(-22deg) translateY(48px)',
+    opacity: 'opacity-85',
+  },
+  {
+    type: 'image',
+    src: '/IMG_2023.jpg',
+    alt: 'Asistentes en el primer evento',
+    transform: 'rotateY(-18deg) translateY(36px)',
+    opacity: 'opacity-90',
+  },
+  {
+    type: 'video',
+    src: '/IMG_2016.MOV',
+    alt: 'Toma del espacio del evento',
+    transform: 'rotateY(-12deg) translateY(24px)',
+    opacity: 'opacity-95',
+  },
+  {
+    type: 'image',
+    src: '/IMG_2072.jpg',
+    alt: 'Momento especial del encuentro',
+    transform: 'scale(1.05) translateY(0px)',
+    opacity: 'opacity-100 ring-2 ring-blue/30 shadow-lg',
+  },
+  {
+    type: 'video',
+    src: '/IMG_2003.MOV',
+    alt: 'Sesión en vivo del evento',
+    transform: 'rotateY(12deg) translateY(24px)',
+    opacity: 'opacity-95',
+  },
+  {
+    type: 'image',
+    src: '/IMG_2091.jpg',
+    alt: 'Founders reunidos en el HUB BDV',
+    transform: 'rotateY(18deg) translateY(36px)',
+    opacity: 'opacity-90',
+  },
+  {
+    type: 'image',
+    src: '/IMG_2093.jpg',
+    alt: 'Networking y café en Caracas',
+    transform: 'rotateY(22deg) translateY(48px)',
+    opacity: 'opacity-85',
+  },
+];
 
 export default function Hero() {
-  const galleryImages = [
-    {
-      src: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=400',
-      alt: 'Founders en el HUB BDV',
-      transform: 'rotateY(-22deg) translateY(48px)',
-      opacity: 'opacity-85',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=400',
-      alt: 'Ponencia de startups venezolanas',
-      transform: 'rotateY(-18deg) translateY(36px)',
-      opacity: 'opacity-90',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=400',
-      alt: 'Masterclass en el Hub BDV Innova',
-      transform: 'rotateY(-12deg) translateY(24px)',
-      opacity: 'opacity-95',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400',
-      alt: 'Founder venezolana exponiendo',
-      transform: 'scale(1.05) translateY(0px)',
-      opacity: 'opacity-100 ring-2 ring-blue/30 shadow-lg',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&q=80&w=400',
-      alt: 'Asistentes en el encuentro de Caracas',
-      transform: 'rotateY(12deg) translateY(24px)',
-      opacity: 'opacity-95',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=400',
-      alt: 'Networking en Caracas',
-      transform: 'rotateY(18deg) translateY(36px)',
-      opacity: 'opacity-90',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&q=80&w=400',
-      alt: 'Grupo de founders compartiendo café',
-      transform: 'rotateY(22deg) translateY(48px)',
-      opacity: 'opacity-85',
-    },
-  ];
-
   return (
     <section className="relative pt-12 pb-24 overflow-hidden bg-white select-none">
       {/* Decorative Blur Backgrounds */}
@@ -80,19 +178,17 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Headline */}
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-ink max-w-4xl leading-[1.08] tracking-tight mb-6">
-          El encuentro mensual de <span className="text-blue">founders venezolanos.</span>
-        </h1>
+        {/* Headline with sequential text reveal */}
+        <AnimatedHeadline />
 
         {/* Subheadline */}
-        <p className="font-body text-muted text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed mb-10">
+        <p className="font-body text-muted text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed mb-8">
           Masterclasses reales, ponentes reales, comunidad real.
           Cada mes en el <span className="text-ink font-semibold">HUB BDV INNOVA</span>, Caracas.
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-10">
+        <div className="flex flex-col sm:flex-row gap-4 mb-4 items-center">
           <Link href="#proximo-evento">
             <Button pill size="lg" className="w-full sm:w-auto gap-2">
               Ver próximo evento
@@ -104,6 +200,11 @@ export default function Hero() {
               Registra tu startup ↗
             </Button>
           </Link>
+        </div>
+
+        {/* Soy nuevo aquí guide drawer */}
+        <div className="mb-10">
+          <NewHere />
         </div>
 
         {/* Dedicated prominent Venue Partner Block (Free Logo + Box below) */}
@@ -126,44 +227,59 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Fan Gallery (3D Perspective Abanico on Desktop) */}
+        {/* Fan Gallery — Real event photos & muted autoplaying videos */}
         <div className="w-full overflow-visible py-8">
-          {/* Desktop view (fan layout) */}
-          <div
-            className="hidden md:flex justify-center items-end overflow-visible gap-3 max-w-6xl mx-auto"
-            style={{ perspective: '1200px' }}
-          >
-            {galleryImages.map((img, idx) => (
-              <div
-                key={idx}
-                className={`w-36 h-56 rounded-2xl overflow-hidden border border-border shadow-md transition-all duration-300 hover:scale-110 hover:z-10 hover:shadow-xl ${img.opacity}`}
-                style={{
-                  transform: img.transform,
-                  transformStyle: 'preserve-3d',
-                  flexShrink: 0,
-                }}
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-full object-cover object-center"
-                />
-              </div>
-            ))}
-          </div>
+          <HeroParallax>
+            {/* Desktop fan layout */}
+            <div
+              className="hidden md:flex justify-center items-end overflow-visible gap-3 max-w-6xl mx-auto animate-in fade-in zoom-in-95 duration-1000"
+              style={{ perspective: '1200px' }}
+            >
+              {galleryItems.map((item, idx) => (
+                <div
+                  key={idx}
+                  className={`w-36 h-56 rounded-2xl overflow-hidden border border-border shadow-md transition-all duration-300 hover:scale-110 hover:z-10 hover:shadow-xl shrink-0 ${item.opacity}`}
+                  style={{
+                    transform: item.transform,
+                    transformStyle: 'preserve-3d',
+                  }}
+                >
+                  {item.type === 'video' ? (
+                    <AutoVideo
+                      src={item.src}
+                      className="w-full h-full object-cover object-center"
+                    />
+                  ) : (
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      className="w-full h-full object-cover object-center"
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+          </HeroParallax>
 
-          {/* Mobile view (touch swipeable snap carousel) */}
+          {/* Mobile scroll carousel */}
           <div className="flex md:hidden w-full overflow-x-auto snap-x snap-mandatory gap-4 px-6 pb-6 no-scrollbar">
-            {galleryImages.map((img, idx) => (
+            {galleryItems.map((item, idx) => (
               <div
                 key={idx}
                 className="w-64 h-80 rounded-2xl overflow-hidden border border-border shadow-md snap-center shrink-0"
               >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-full object-cover object-center"
-                />
+                {item.type === 'video' ? (
+                  <AutoVideo
+                    src={item.src}
+                    className="w-full h-full object-cover object-center"
+                  />
+                ) : (
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full h-full object-cover object-center"
+                  />
+                )}
               </div>
             ))}
           </div>

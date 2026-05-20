@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Large raw media files — HEIC originals (converted to JPG) and MOV videos
+public/*.HEIC
+public/*.heic
+public/*.MOV
+public/*.mov

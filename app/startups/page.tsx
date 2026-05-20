@@ -5,6 +5,11 @@ import Navbar from '@/components/landing/navbar';
 import Footer from '@/components/landing/footer';
 import StartupDirectoryClient from '@/components/startups/startup-directory-client';
 
+// Advanced interactive ecosystem items
+import { FeaturedStartup } from '@/components/startups/featured-startup';
+import { EcosystemMap } from '@/components/startups/ecosystem-map';
+import { CommunityStats } from '@/components/startups/community-stats';
+
 export const revalidate = 60; // Revalidate every 60 seconds (ISR)
 
 export default async function StartupsPage() {
@@ -36,9 +41,9 @@ export default async function StartupsPage() {
       <Navbar />
 
       <main className="flex-grow py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-6 space-y-12">
           {/* Header Split layout */}
-          <div className="max-w-3xl mb-12 select-none">
+          <div className="max-w-3xl select-none">
             <span className="text-[10px] font-body font-semibold text-blue uppercase tracking-widest block mb-3">
               Directorio Público
             </span>
@@ -50,15 +55,55 @@ export default async function StartupsPage() {
             </p>
           </div>
 
-          {/* Directory Content */}
-          {errorMsg ? (
-            <div className="rounded-2xl border border-red-200 bg-rose-50 p-6 text-red-800 text-center max-w-xl mx-auto shadow-xs">
-              <span className="text-3xl block mb-2">⚠️</span>
-              <p className="font-medium text-xs font-semibold select-text">{errorMsg}</p>
+          {/* Startup Destacada del Mes (Feature 23) */}
+          <FeaturedStartup />
+
+          {/* Leaflet ecosystem map showing pins across cities (Feature 19) */}
+          <div className="space-y-4">
+            <div>
+              <span className="text-[10px] font-bold text-blue uppercase tracking-widest block mb-1">
+                Ecosistema Nacional
+              </span>
+              <h3 className="font-display font-extrabold text-base text-ink uppercase tracking-wide">
+                Distribución Geográfica
+              </h3>
             </div>
-          ) : (
-            <StartupDirectoryClient initialStartups={approvedStartups} />
-          )}
+            <EcosystemMap />
+          </div>
+
+          {/* Recharts community stats (Feature 20) */}
+          <div className="space-y-4">
+            <div>
+              <span className="text-[10px] font-bold text-blue uppercase tracking-widest block mb-1">
+                Métricas de Comunidad
+              </span>
+              <h3 className="font-display font-extrabold text-base text-ink uppercase tracking-wide">
+                Análisis Estadístico
+              </h3>
+            </div>
+            <CommunityStats />
+          </div>
+
+          {/* Directory Filter & Listings Content */}
+          <div className="space-y-4 pt-6 border-t border-border/80">
+            <div>
+              <span className="text-[10px] font-bold text-blue uppercase tracking-widest block mb-1">
+                Explorar Proyectos
+              </span>
+              <h3 className="font-display font-extrabold text-base text-ink uppercase tracking-wide">
+                Directorio
+              </h3>
+            </div>
+            
+            {errorMsg ? (
+              <div className="rounded-2xl border border-red-200 bg-rose-50 p-6 text-red-800 text-center max-w-xl mx-auto shadow-xs">
+                <span className="text-3xl block mb-2">⚠️</span>
+                <p className="font-medium text-xs font-semibold select-text">{errorMsg}</p>
+              </div>
+            ) : (
+              <StartupDirectoryClient initialStartups={approvedStartups} />
+            )}
+          </div>
         </div>
       </main>
 

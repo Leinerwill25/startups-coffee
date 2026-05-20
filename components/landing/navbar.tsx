@@ -1,12 +1,23 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Button from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [bannerActive, setBannerActive] = useState(false);
+
+  useEffect(() => {
+    const checkBanner = () => {
+      const isDismissed = localStorage.getItem('sc_event_banner_dismissed');
+      setBannerActive(!isDismissed);
+    };
+    checkBanner();
+    window.addEventListener('event_banner_change', checkBanner);
+    return () => window.removeEventListener('event_banner_change', checkBanner);
+  }, []);
 
   const navLinks = [
     { label: 'Inicio', href: '/' },
@@ -16,7 +27,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-border select-none">
+    <header className={`sticky ${bannerActive ? 'top-[42px] sm:top-[44px]' : 'top-0'} z-50 w-full bg-white/80 backdrop-blur-md border-b border-border select-none transition-all duration-200`}>
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo Left */}
         <Link href="/" className="flex items-center gap-2 group">
