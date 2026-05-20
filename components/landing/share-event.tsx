@@ -36,35 +36,38 @@ export function ShareEvent() {
   }
 
   return (
-    <div className="flex items-center gap-2 flex-wrap justify-center sm:justify-start font-body select-none">
-      <span className="text-[10px] uppercase tracking-widest font-bold text-muted flex items-center gap-1">
+    <div className="font-body select-none">
+      <span className="text-[10px] uppercase tracking-widest font-bold text-muted flex items-center gap-1 mb-3">
         <Share2 size={12} /> Compartir:
       </span>
-      {shares.map(({ label, href, color }) => (
-        <a
-          key={label}
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`${color} text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full transition-all duration-200 shadow-xs hover:scale-105 shrink-0 cursor-pointer`}
+      {/* 2-col grid on mobile → auto-fit on sm+ */}
+      <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2">
+        {shares.map(({ label, href, color }) => (
+          <a
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${color} text-white text-[10px] font-bold uppercase tracking-wider px-3 py-2 rounded-full transition-all duration-200 shadow-xs hover:scale-105 cursor-pointer text-center`}
+          >
+            {label}
+          </a>
+        ))}
+        <button
+          onClick={copyLink}
+          className="col-span-2 sm:col-span-1 text-[10px] font-bold uppercase tracking-wider border border-border bg-white text-ink px-3 py-2 rounded-full hover:border-blue hover:text-blue hover:scale-105 transition-all duration-200 flex items-center justify-center gap-1 cursor-pointer"
         >
-          {label}
-        </a>
-      ))}
-      <button
-        onClick={copyLink}
-        className="text-[10px] font-bold uppercase tracking-wider border border-border bg-white text-ink px-3.5 py-1.5 rounded-full hover:border-blue hover:text-blue hover:scale-105 transition-all duration-200 flex items-center gap-1 shrink-0 cursor-pointer"
-      >
-        {copied ? (
-          <>
-            <Check size={11} className="text-green-600" /> Copiado
-          </>
-        ) : (
-          <>
-            <Copy size={11} /> Copiar link
-          </>
-        )}
-      </button>
+          {copied ? (
+            <>
+              <Check size={11} className="text-green-600" /> Copiado
+            </>
+          ) : (
+            <>
+              <Copy size={11} /> Copiar link
+            </>
+          )}
+        </button>
+      </div>
     </div>
   )
 }

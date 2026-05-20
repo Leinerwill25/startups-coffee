@@ -21,7 +21,7 @@ export default function NextEventCard() {
     <section id="proximo-evento" className="py-24 bg-white select-none">
       <div className="max-w-7xl mx-auto px-6">
         {/* Card Wrapper without arbitrary yellow corner dots */}
-        <div className="relative border border-border bg-white rounded-3xl p-8 sm:p-12 shadow-xl shadow-blue/5 overflow-hidden group">
+        <div className="relative border border-border bg-white rounded-3xl p-5 sm:p-12 shadow-xl shadow-blue/5 overflow-hidden group">
           {/* Decorative Corner Blue Shimmer */}
           <div className="absolute top-[-10%] right-[-10%] w-[20rem] h-[20rem] rounded-full bg-blue/5 blur-3xl pointer-events-none group-hover:scale-110 transition-transform duration-500" />
           
@@ -42,7 +42,7 @@ export default function NextEventCard() {
             </p>
 
             {/* Split Grid Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 w-full items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full items-start">
               {/* Left Column: Transactional details & registration */}
               <div className="col-span-12 lg:col-span-7 space-y-8">
                 {/* Countdown Timer */}
@@ -122,7 +122,7 @@ export default function NextEventCard() {
                     alt="HUB BDV INNOVA Logo"
                     className="h-28 sm:h-32 w-auto object-contain select-none pointer-events-none filter drop-shadow-sm mb-6 hover:scale-105 transition-all duration-300"
                   />
-                  <div className="bg-bg-subtle border border-border/80 rounded-3xl p-6 shadow-xs text-center w-full max-w-md">
+                  <div className="bg-bg-subtle border border-border/80 rounded-3xl p-5 shadow-xs text-center w-full">
                     <span className="block text-[10px] font-body font-bold uppercase tracking-widest text-muted leading-none mb-1.5">
                       Sede Oficial y Patrocinador de Espacio
                     </span>
